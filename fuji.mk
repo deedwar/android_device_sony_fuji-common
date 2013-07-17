@@ -93,7 +93,24 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8660 \
-    audio.primary.msm8660
+    audio.primary.msm8660 \
+    audio_policy.conf \
+    libaudioutils
+
+PRODUCT_COPY_FILES += \
+    device/sony/fuji-common/config/media_codecs.xml:system/etc/media_codecs.xml \
+    device/sony/fuji-common/config/media_profiles.xml:system/etc/media_profiles.xml
+
+# Omx
+PRODUCT_PACKAGES += \
+    libdivxdrmdecrypt \
+    libI420colorconvert \
+    libmm-omxcore \
+    libOmxCore \
+    libOmxVdec \
+    libOmxVenc \
+    libstagefrighthw \
+    libstagefright_client
 
 # GPS
 PRODUCT_PACKAGES += \
