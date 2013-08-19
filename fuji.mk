@@ -197,13 +197,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true \
     ro.ril.transmitpower=true
 
-#### Goo Manager support
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.goo.developerid=RaymanFX \
-    ro.goo.board=$(subst full_,,$(TARGET_PRODUCT)) \
-    ro.goo.rom=opensemc_cm \
-    ro.goo.version=$(shell date +%s)
-
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_cache_width=2048
