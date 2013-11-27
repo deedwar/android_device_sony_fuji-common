@@ -105,10 +105,10 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+	audio_policy.conf \
     audio_policy.msm8660 \
     audio.primary.msm8660 \
     audio.usb.default
-    #audio_policy.conf
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -160,10 +160,6 @@ PRODUCT_COPY_FILES += \
     device/sony/fuji-common/rootdir/init.semc.rc:root/init.semc.rc \
     device/sony/fuji-common/rootdir/system/etc/init.fixbt.sh:system/etc/init.fixbt.sh \
     device/sony/fuji-common/rootdir/ueventd.semc.rc:root/ueventd.semc.rc
-
-# Audio policy config
-PRODUCT_COPY_FILES += \
-    device/sony/fuji-common/config/audio_policy.conf:system/etc/audio_policy.conf
 
 # Post recovery script
 PRODUCT_COPY_FILES += \
@@ -259,7 +255,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Low Power Audio Decoding
 #PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=false
+	lpa.decode=true
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
