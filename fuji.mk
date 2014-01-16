@@ -199,7 +199,7 @@ PRODUCT_COPY_FILES += \
 
 # Boot Logo
 PRODUCT_COPY_FILES += \
-     device/sony/fuji-common/bootlogo/OpenSEMC2.rle:root/logo.rle
+     device/sony/fuji-common/bootlogo/logo_sony_720x1280.rle:root/logo.rle
 
 # Extract recovery ramdisks
 PRODUCT_PACKAGES += \
