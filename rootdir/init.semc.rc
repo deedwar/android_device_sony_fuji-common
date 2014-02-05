@@ -33,6 +33,7 @@ on init
 
 on fs
     mount_all /fstab.semc
+	swapon_all /fstab.semc
 
     # SEMC, TA Daemon
     class_start trimarea
