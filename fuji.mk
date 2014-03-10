@@ -199,7 +199,7 @@ PRODUCT_COPY_FILES += \
 
 # Boot Logo
 PRODUCT_COPY_FILES += \
-     device/sony/fuji-common/bootlogo/OpenSEMC2.rle:root/logo.rle
+     device/sony/fuji-common/bootlogo/sony.rle:root/logo.rle
 
 # Extract recovery ramdisks
 PRODUCT_PACKAGES += \
@@ -238,9 +238,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #### Goo Manager support
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.goo.developerid=RaymanFX \
+    ro.goo.developerid=deedwar \
     ro.goo.board=$(subst full_,,$(TARGET_PRODUCT)) \
-    ro.goo.rom=opensemc_cm \
+    ro.goo.rom=beanstalk \
     ro.goo.version=$(shell date +%s)
 
 # QCOM
@@ -264,7 +264,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     persist.hwc.mdpcomp.enable=true \
     debug.composition.type=dyn \
-    debug.mdpcomp.maxlayer=3 \
+    debug.mdpcomp.maxlayer=2 \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -288,3 +288,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
+
+#Apollo Music Player
+PRODUCT_PACKAGES += Apollo
