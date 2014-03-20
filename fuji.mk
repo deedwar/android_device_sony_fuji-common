@@ -149,7 +149,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     make_ext4fs \
     e2fsck \
-    setup_fs
+    setup_fs \
+	mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -160,7 +163,9 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_COPY_FILES += \
     device/sony/fuji-common/rootdir/init.semc.rc:root/init.semc.rc \
     device/sony/fuji-common/rootdir/system/etc/init.fixbt.sh:system/etc/init.fixbt.sh \
-    device/sony/fuji-common/rootdir/ueventd.semc.rc:root/ueventd.semc.rc
+    device/sony/fuji-common/rootdir/ueventd.semc.rc:root/ueventd.semc.rc \
+    device/sony/fuji-common/rootdir/system/etc/init.recovery.semc.rc:system/etc/init.recovery.semc.rc \
+
 
 # Audio policy config
 PRODUCT_COPY_FILES += \
@@ -276,6 +281,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Low Power Audio Decoding
 #PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
+
+# Set default USB interface
+DEFAULT_PROPERTY_OVERRIDES += \
+	ro.secure=0 \
+	ro.allow.mock.location=1 \
+	ro.debuggable=1 \
+	persist.service.adb.enable=1 \
+	persist.sys.usb.config=mtp,adb
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
