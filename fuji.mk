@@ -261,11 +261,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.egl.hw=1 \
     debug.sf.hw=1 \
+    debug.egl.hw=1 \
     persist.hwc.mdpcomp.enable=true \
-    debug.composition.type=dyn \
-    debug.mdpcomp.maxlayer=2 \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -275,7 +273,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # More display props - double check these!
 PRODUCT_PROPERTY_OVERRIDES += \
-    dev.pm.dyn_samplingrate=1 \
     debug.hwc.dynThreshold=1.9
 
 # Low Power Audio Decoding
@@ -283,12 +280,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
 
 # Set default USB interface
-DEFAULT_PROPERTY_OVERRIDES += \
-	ro.secure=0 \
-	ro.allow.mock.location=1 \
-	ro.debuggable=1 \
-	persist.service.adb.enable=1 \
-	persist.sys.usb.config=mtp,adb
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.secure=0 \
+    ro.debuggable=1 \
+    persist.service.adb.enable=1 \
+    persist.sys.usb.config=mtp,adb
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -297,6 +293,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
-
-#Apollo Music Player
-PRODUCT_PACKAGES += Apollo
