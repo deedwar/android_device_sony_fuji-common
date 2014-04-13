@@ -199,7 +199,7 @@ PRODUCT_COPY_FILES += \
 
 # Boot Logo
 PRODUCT_COPY_FILES += \
-     device/sony/fuji-common/bootlogo/OpenSEMC2.rle:root/logo.rle
+     device/sony/fuji-common/bootlogo/sony.rle:root/logo.rle
 
 # Extract recovery ramdisks
 PRODUCT_PACKAGES += \
@@ -232,12 +232,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true \
     ro.ril.transmitpower=true
 
-#### Goo Manager support
+# USB Debugging
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.goo.developerid=RaymanFX \
-    ro.goo.board=$(subst full_,,$(TARGET_PRODUCT)) \
-    ro.goo.rom=opensemc_cm \
-    ro.goo.version=$(shell date +%s)
+    ro.secure=0 \
+    ro.debuggable=1 \
+    persist.service.adb.enable=1 \
+    persist.sys.usb.config=mtp,adb
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -259,8 +259,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
     persist.hwc.mdpcomp.enable=true \
-    debug.composition.type=dyn \
-    debug.mdpcomp.maxlayer=3 \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -270,7 +268,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # More display props - double check these!
 PRODUCT_PROPERTY_OVERRIDES += \
-    dev.pm.dyn_samplingrate=1 \
     debug.hwc.dynThreshold=1.9
 
 # Low Power Audio Decoding
