@@ -238,6 +238,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true
 
 # USB Debugging
+<<<<<<< HEAD
+=======
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.secure=0 \
+    ro.debuggable=1 \
+    persist.service.adb.enable=1 \
+    persist.sys.usb.config=mtp,adb
+
+#### Goo Manager support
+>>>>>>> 02e37a27426545a41a85a59cbe1d81507109bb96
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.secure=0 \
     ro.debuggable=1 \
