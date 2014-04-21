@@ -214,4 +214,8 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">39</integer>
 
+	<!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
+	<bool name="config_multiColorBatteryLed">true</bool>
+
 </resources>
