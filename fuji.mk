@@ -60,6 +60,7 @@ PRODUCT_PACKAGES += \
     copybit.msm8660 \
     gralloc.msm8660 \
     hwcomposer.msm8660 \
+    memtrack.msm8660 \
     libgenlock \
     libmemalloc \
     liboverlay \
@@ -110,6 +111,10 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     libaudioutils
     #audio_policy.conf
+
+# Camera wrapper
+#PRODUCT_PACKAGES += \
+#    camera.fuji
 
 # GPS
 PRODUCT_PACKAGES += \
