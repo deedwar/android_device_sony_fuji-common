@@ -24,8 +24,8 @@ TARGET_SPECIFIC_HEADER_PATH := device/sony/fuji-common/include
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
 
 # QCOM hardware
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 BOARD_USES_QCOM_HARDWARE := true
+TARGET_USES_QCOM_BSP := true
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8660
@@ -126,9 +126,6 @@ BOARD_EGL_CFG := device/sony/fuji-common/rootdir/system/lib/egl/egl.cfg
 TARGET_PROVIDES_LIBLIGHT := true
 # Legacy define
 TARGET_PROVIDES_LIBLIGHTS := true
-
-# CM Hardware Class
-BOARD_HARDWARE_CLASS := hardware/sony/cmhw
 
 # Camera
 TARGET_PROVIDES_CAMERA_HAL := true
