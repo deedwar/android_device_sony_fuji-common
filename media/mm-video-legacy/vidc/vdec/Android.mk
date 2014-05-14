@@ -65,6 +65,10 @@ libmm-vdec-inc          += frameworks/native/include/media/openmax
 libmm-vdec-inc          += frameworks/native/include/media/hardware
 libmm-vdec-inc          += device/sony/fuji-common/media/libc2dcolorconvert
 
+libmm-vdec-inc          += hardware/qcom/display/msm8960/libgralloc
+libmm-vdec-inc          += hardware/qcom/display/msm8960/libqservice
+libmm-vdec-inc          += hardware/qcom/display/msm8960/libqdutils
+
 libmm-vdec-inc          += device/sony/fuji-common/display/libcopybit
 libmm-vdec-inc          += frameworks/av/include/media/stagefright
 

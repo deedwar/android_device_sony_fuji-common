@@ -184,34 +184,5 @@ SOMC_CFG_SENSORS_HAVE_LIBAK8972 := yes
 SOMC_CFG_SENSORS_HAVE_LIBALS := yes
 SOMC_CFG_SENSORS_HAVE_LIBMPU3050 := yes
 
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-    device/sony/fuji-common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    app.te \
-    bluetooth.te \
-    device.te \
-    domain.te \
-    drmserver.te \
-    file_contexts \
-    files \
-    file.te \
-    hci_init.te \
-    healthd.te \
-    init.te \
-    init_shell.te \
-    keystore.te \
-    kickstart.te \
-    mediaserver.te \
-    rild.te \
-    surfaceflinger.te \
-    system.te \
-    ueventd.te \
-    untrusted_app.te \
-    vold.te \
-    wpa.te \
-    wpa_socket.te
-
 # inherit from fuji-common
 -include vendor/sony/fuji-common/BoardConfigCommon.mk

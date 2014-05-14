@@ -49,6 +49,8 @@ libmm-venc-inc      += $(OMX_VIDEO_PATH)/vidc/common/inc
 libmm-venc-inc      += device/sony/fuji-common/media/mm-core/inc
 libmm-venc-inc      += device/sony/fuji-common/media/libstagefrighthw
 
+libmm-venc-inc      += hardware/qcom/display/msm8960/libgralloc
+
 libmm-venc-inc      += device/sony/fuji-common/display/libgralloc
 
 libmm-venc-inc      += frameworks/native/include/media/hardware
