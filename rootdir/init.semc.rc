@@ -30,6 +30,7 @@ on init
 
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
+    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin:/data/bin
 
 on fs
     mount_all /fstab.semc
@@ -77,6 +78,9 @@ on post-fs
     exec /system/bin/sh /system/etc/pre_hw_config.sh
 
 on early-boot
+    # Exec bootsel to select boot mode.
+    exec /sbin/bootsel.sh
+
     # Start the offline charging (This blocks booting further in some cases)
     exec /system/bin/chargemon
 
@@ -199,20 +203,12 @@ on boot
     # bluetooth address programming
     setprop ro.bt.bdaddr_path /data/etc/bluetooth_bdaddr
 
-	mkdir /dev/misc/ 0711 system system
-    mkdir /dev/misc/rtc 0711 system system
-	chmod 660 /dev/misc/rtc
-    chown system system /dev/misc/rtc
-
-    chmod 660 /dev/rtc0
-    chown system system /dev/rtc0
-
     # power-management
 
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor lionheart
     # need to force cpu1 online every time to set values
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor lionheart
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     # need to force cpu1 online every time to set values
@@ -294,6 +290,15 @@ on post-fs-data
     # Change adj level and min_free_kbytes setting for lowmemory killer to kick in
     write /sys/module/lowmemorykiller/parameters/adj 0,1,2,4,9,12
     write /proc/sys/vm/min_free_kbytes 5120
+
+    # Hardware tunables
+    chown root system /sys/devices/platform/msm_ssbi.0/pm8058-core/pm8xxx-vib/amp
+    chmod 0664 /sys/devices/platform/msm_ssbi.0/pm8058-core/pm8xxx-vib/amp
+    restorecon /sys/devices/platform/msm_ssbi.0/pm8058-core/pm8xxx-vib/amp
+
+    chown root system /sys/devices/platform/mdp.524288/kcal
+    chmod 0664 /sys/devices/platform/mdp.524288/kcal
+    restorecon /sys/devices/platform/mdp.524288/kcal
 
     setprop vold.post_fs_data_done 1
 
@@ -521,3 +526,36 @@ on property:init.svc.wpa_supplicant=stopped
 
 on property:init.svc.p2p_supplicant=stopped
     stop dhcpcd
+
+## Power profiles (MK QS tile)
+
+# Powersave
+on property:sys.perf.profile=0
+    start mpdecision
+    start thermald
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1242000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1242000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor lionheart
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor lionheart
+    write /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_gpuclk 160000000
+
+# Balanced
+on property:sys.perf.profile=1
+    start mpdecision
+    start thermald
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1512000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1512000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor lionheart
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor lionheart
+    write /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_gpuclk 266667000
+
+# High performance
+on property:sys.perf.profile=2
+    stop mpdecision
+    stop thermald
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1512000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1512000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
