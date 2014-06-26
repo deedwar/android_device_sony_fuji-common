@@ -163,6 +163,9 @@ TARGET_NO_SEPARATE_RECOVERY := true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
+# External apps on SD
+TARGET_EXTERNAL_APPS = sdcard0
+
 # TWRP
 DEVICE_RESOLUTION := 720x1280
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
