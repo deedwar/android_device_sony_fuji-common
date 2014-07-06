@@ -112,6 +112,11 @@ PRODUCT_PACKAGES += \
     libaudioutils
     #audio_policy.conf
 
+# Voice processing
+PRODUCT_PACKAGES += libqcomvoiceprocessing
+PRODUCT_COPY_FILES += \
+    device/sony/fuji-common/rootdir/system/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
+
 # Camera wrapper
 #PRODUCT_PACKAGES += \
 #    camera.fuji
