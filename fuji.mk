@@ -263,7 +263,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
-    persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
