@@ -129,7 +129,7 @@ PRODUCT_COPY_FILES += \
 
 # GPS Config
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
+    device/sony/fuji-common/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
 # Power HAL
 PRODUCT_PACKAGES += \
