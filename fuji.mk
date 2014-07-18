@@ -274,6 +274,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
 
+# Time
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.timed.enable=true
+
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \

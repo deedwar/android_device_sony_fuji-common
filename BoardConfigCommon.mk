@@ -152,6 +152,9 @@ BOARD_BLUEDROID_VENDOR_CONF := device/sony/fuji-common/bluetooth/vnd_msm8660.txt
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
 
+# Time
+BOARD_USES_QC_TIME_SERVICES := true
+
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
