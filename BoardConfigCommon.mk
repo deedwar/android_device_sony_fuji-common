@@ -117,9 +117,6 @@ TARGET_DISPLAY_INSECURE_MM_HEAP := true
 # Use reserved fields for fps
 TARGET_DISPLAY_USE_RESERVED_FIELDS := true
 
-# QCOM enhanced A/V
-#TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-
 # EGL
 BOARD_EGL_CFG := device/sony/fuji-common/rootdir/system/lib/egl/egl.cfg
 
@@ -148,10 +145,6 @@ TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/sony/fuji-common/bluedroid/bluetooth.c
 BOARD_BLUEDROID_VENDOR_CONF := device/sony/fuji-common/bluetooth/vnd_msm8660.txt
 
-# Webkit
-ENABLE_WEBGL := true
-TARGET_FORCE_CPU_UPLOAD := true
-
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
@@ -160,9 +153,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/fuji-common/custombootimg.mk
 TARGET_NO_SEPARATE_RECOVERY := true
-
-# AOSP releasetools extensions
-#TARGET_RELEASETOOLS_EXTENSIONS := device/sony/fuji-common
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
