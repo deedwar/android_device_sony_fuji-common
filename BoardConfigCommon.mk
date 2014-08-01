@@ -73,9 +73,9 @@ BOARD_KERNEL_PAGESIZE := 2048
 
 # RIL
 #BOARD_PROVIDES_LIBRIL := true
-BOARD_RIL_NO_CELLINFOLIST := true
+#BOARD_RIL_NO_CELLINFOLIST := true
 #BOARD_USES_QCOM_RIL_RESPONSE_5_ELEMENTS := true
-#BOARD_RIL_CLASS := ../../../device/sony/fuji-common/ril/telephony/java/com/android/internal/telephony/SonyQualcommRIL.java
+BOARD_RIL_CLASS := ../../../device/sony/fuji-common/ril/telephony/java/com/android/internal/telephony/SonyQualcommRIL.java
 
 # Wifi related defines
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -96,8 +96,8 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_ACDB_ENABLED -DQCOM_VOIP_ENABLED
 BOARD_HAVE_SONY_AUDIO := true
 BOARD_HAVE_BACK_MIC_CAMCORDER := true
 BOARD_QCOM_TUNNEL_LPA_ENABLED := false
+#BOARD_USE_QCOM_LPA := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
-BOARD_QCOM_VOIP_ENABLED := true
 
 # Graphics
 COMMON_GLOBAL_CFLAGS += -DNUM_FB_DEVICES=2 -DSCREENSHOT_CLIENT_STRIDE_HACK
@@ -116,6 +116,9 @@ TARGET_DISPLAY_INSECURE_MM_HEAP := true
 
 # Use reserved fields for fps
 TARGET_DISPLAY_USE_RESERVED_FIELDS := true
+
+# QCOM enhanced A/V
+#TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # EGL
 BOARD_EGL_CFG := device/sony/fuji-common/rootdir/system/lib/egl/egl.cfg
@@ -145,14 +148,18 @@ TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/sony/fuji-common/bluedroid/bluetooth.c
 BOARD_BLUEDROID_VENDOR_CONF := device/sony/fuji-common/bluetooth/vnd_msm8660.txt
 
-# Time
-BOARD_USES_QC_TIME_SERVICES := true
+# Webkit
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
 
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/fuji-common/custombootimg.mk
 TARGET_NO_SEPARATE_RECOVERY := true
+
+# AOSP releasetools extensions
+#TARGET_RELEASETOOLS_EXTENSIONS := device/sony/fuji-common
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 

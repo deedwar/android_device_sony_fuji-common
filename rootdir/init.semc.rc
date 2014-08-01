@@ -30,7 +30,6 @@ on init
 
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
-    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin:/data/bin
 
 on fs
     mount_all /fstab.semc
@@ -63,9 +62,6 @@ on post-fs
 
     # Camera
     mkdir /data/camera 0771 root camera
-
-	# Create /data/time folder for time-services
-	mkdir /data/time/ 0700 system system
 
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
@@ -291,15 +287,6 @@ on post-fs-data
     write /sys/module/lowmemorykiller/parameters/adj 0,1,2,4,9,12
     write /proc/sys/vm/min_free_kbytes 5120
 
-    # Hardware tunables
-    chown root system /sys/devices/platform/msm_ssbi.0/pm8058-core/pm8xxx-vib/amp
-    chmod 0664 /sys/devices/platform/msm_ssbi.0/pm8058-core/pm8xxx-vib/amp
-    restorecon /sys/devices/platform/msm_ssbi.0/pm8058-core/pm8xxx-vib/amp
-
-    chown root system /sys/devices/platform/mdp.524288/kcal
-    chmod 0664 /sys/devices/platform/mdp.524288/kcal
-    restorecon /sys/devices/platform/mdp.524288/kcal
-
     setprop vold.post_fs_data_done 1
 
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard0 /storage/sdcard0
@@ -476,11 +463,6 @@ on property:ro.use_data_netmgrd=false
 service qrngd /system/bin/qrngd -f
     class late_start
     user root
-
-service time_daemon /system/bin/time_daemon
-    class late_start
-    user root
-    group root
 
 service qseecomd /system/bin/qseecomd
     class late_start
