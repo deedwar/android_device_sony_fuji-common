@@ -16,6 +16,9 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
+
 DEVICE_PACKAGE_OVERLAYS += device/sony/fuji-common/overlay
 
 # Permissions
@@ -107,6 +110,11 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8660 \
     libaudio-resampler \
     libaudioutils
+    #audio_policy.conf
+
+# Camera wrapper
+#PRODUCT_PACKAGES += \
+#    camera.fuji
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -126,10 +134,6 @@ PRODUCT_PACKAGES += \
 # Bluetooth vendor config
 PRODUCT_COPY_FILES += \
     device/sony/fuji-common/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
-
-# GPS Config
-PRODUCT_COPY_FILES += \
-    device/sony/fuji-common/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
 # Power HAL
 PRODUCT_PACKAGES += \
@@ -213,7 +217,7 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SonyQualcomm8x60RIL \
+    ro.telephony.ril_class=SonyQualcommRIL \
     ro.telephony.ril.v3=skippinpukcount,qcomdsds \
     ro.telephony.call_ring.multiple=false \
     persist.rild.nitz_plmn= \
@@ -259,6 +263,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
+    persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -273,10 +278,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Low Power Audio Decoding
 #PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
-
-# Time
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.timed.enable=true
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
