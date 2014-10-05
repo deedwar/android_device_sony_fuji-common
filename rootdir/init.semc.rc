@@ -523,3 +523,6 @@ on property:init.svc.bootanim=running
     # Clear Sony boot splash
     write /sys/class/graphics/fb0/blank 1
     write /sys/class/graphics/fb0/blank 0
+
+on property:init.svc.bootanim=stopped
+    write /sys/block/mmcblk0/queue/scheduler row
