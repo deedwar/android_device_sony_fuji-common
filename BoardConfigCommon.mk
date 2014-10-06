@@ -125,8 +125,8 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Legacy define
 TARGET_PROVIDES_LIBLIGHTS := true
 
-# CM Hardware Class
-BOARD_HARDWARE_CLASS := hardware/sony/cmhw
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Camera
 TARGET_PROVIDES_CAMERA_HAL := true
