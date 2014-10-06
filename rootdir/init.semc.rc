@@ -61,9 +61,6 @@ on post-fs
     chown idd idd /data/idd
     chmod 0755 /data/idd
 
-    # Camera
-    mkdir /data/camera 0771 root camera
-
 	# Create /data/time folder for time-services
 	mkdir /data/time/ 0700 system system
 
@@ -154,6 +151,13 @@ on boot
 
     #Set SUID bit for diag_mdlog
     chmod 4755 /system/bin/diag_mdlog
+
+	# SONY: Camera
+    mkdir /data/camera 0770 media camera
+    chown media camera /sys/devices/sony_camera_0/info
+    chmod 0770 /sys/devices/sony_camera_0/info
+    chown media camera /sys/devices/sony_camera_1/info
+    chmod 0770 /sys/devices/sony_camera_1/info
 
     # LM35xx/cameralight
     chown system camera /sys/devices/i2c-3/3-0053/torch_enable
